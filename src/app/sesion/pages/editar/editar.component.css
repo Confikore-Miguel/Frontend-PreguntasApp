@@ -1,0 +1,16 @@
+#fondo-editar{
+    width: 100%;
+    height: auto;
+    background: var(--surface-b);
+    border-radius:20px;
+    color: var(--text-color);
+}
+.menu{
+    background:var(--surface-a);
+    width: 200px;
+    height: auto;
+    border-radius:20px;
+}
+.items li{
+    list-style: none;
+}

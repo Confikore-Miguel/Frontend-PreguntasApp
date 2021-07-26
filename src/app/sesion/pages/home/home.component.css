@@ -1,0 +1,19 @@
+#fondo-home{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(to top,rgba(51, 12, 141, 0.322) 0%,rgba(185, 15, 137, 0.322) 100%)
+    ,url(/assets/img/fondo-login.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.menu{
+    width: 85%;    
+}
+.paginas{
+    width: 85%;
+}
+.footer{
+    width: 85%;
+}

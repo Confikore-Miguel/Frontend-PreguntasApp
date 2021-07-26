@@ -1,0 +1,7 @@
+footer{
+    color: var(--text-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background: var(--surface-b);
+    height: 50px;
+    border-radius:20px;
+}

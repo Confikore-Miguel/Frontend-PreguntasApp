@@ -1,0 +1,43 @@
+#fondo-responder{
+    width: 100%;
+    height: auto;
+    background: var(--surface-b);
+    border-radius:20px;
+    color: var(--text-color);
+}
+
+:host ::ng-deep .p-dropdown {
+    width: 14rem;
+}
+
+.fondo-pregunta{
+    background: var(--surface-c);
+    width: 70%;
+    min-height: 300px;
+    max-height: auto;
+    box-shadow: -3px -5px 95px 0px rgba(23, 2, 29, 0.75);
+    border-radius: 10px;
+}
+
+.pregunta{
+    width: 80%;
+    min-height: 50px;
+    max-height: auto;
+    border-radius: 20px;
+    background-color: var(--orange-700);
+    box-shadow: -3px -5px 95px 0px rgba(0,0,0,0.75);
+}
+
+.respuestas{
+    width:300px;
+    min-height: 50px;
+    max-height: auto;
+    background-color:  var(--purple-700);
+    border-radius: 20px;
+    box-shadow: -3px -5px 95px 0px rgba(0,0,0,0.75);
+}
+
+.respuestas:hover {
+    background-color:  var(--purple-500);
+    cursor: pointer;
+}

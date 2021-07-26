@@ -1,0 +1,247 @@
+
+<div id="fondo-editar" class="p-grid p-mt-1 animate__animated animate__fadeInDown">
+    <!-- TODO: menu -->
+    <div class="p-col-12 p-mt-3">
+        <h1 class="p-text-center">Editar</h1>
+        <p-divider></p-divider>
+    </div>
+    <div class="menu p-d-flex p-ai-center p-jc-center p-col-3 p-mb-6 p-mt-4 p-ml-6 animate__animated animate__fadeInDown">
+        <ul class="items">
+            <li *ngFor="let item of labelMenu">
+                <button pButton 
+                        [label]="item.label"
+                        (click)="menu(item.label)"
+                        style="width: 150px;"
+                        class="p-m-3 ">
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- TODO:Formularios dinamicos -->
+
+    <div class="p-col">
+
+        <div [hidden]="categoria"
+             class="p-p-5 animate__animated animate__fadeInDown">
+            <h2>Categoria</h2>
+            <p-divider></p-divider>
+            <form [formGroup]="miFormularioCategoria"
+                  (ngSubmit)="editarCategoria()">
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12">
+                        <label class="text-color"><strong>Categorias</strong></label>
+                        <p-dropdown placeholder="-- seleccione --"
+                                    [options]="opcionesCategoria"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    formControlName="id"
+                                    (click)="nombres($event,'formCa')">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12">
+                        <label class="text-color"><strong>Nuevo nombre</strong></label>
+                        <input type="text" 
+                               pInputText
+                               placeholder="Ejemplo: 'Peliculas','Anime'"
+                               formControlName="nom_categoria">
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col p-d-flex">
+                        <button pButton 
+                                label="Guardar cambios"
+                                type="submit"
+                                [disabled]="miFormularioCategoria.invalid"
+                                class="p-button-secondary p-mr-1">
+                        </button>
+                        <button pButton 
+                                label="Eliminar"
+                                type="button"
+                                (click)="eliminarCategoria()"
+                                class="p-button-danger">
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div [hidden]="pregunta"
+             class="p-p-5 animate__animated animate__fadeInDown">
+
+            <h2>Pregunta</h2>
+            <p-divider></p-divider>
+
+            <form [formGroup]="miFormularioPregunta"
+                  (ngSubmit)="editarPregunta()">
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-8">
+                        <label>
+                            <strong>Categorias</strong>
+                        </label>
+                        <p-dropdown [options]="opcionesCategoria"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="-- seleccione --"
+                                    formControlName="categoria_id">
+                        </p-dropdown>
+                    </div>
+                    <div class="p-field p-col-4 p-mt-4">
+                        <button pButton 
+                                (click)="buscarPreguntas('pregunta')"
+                                label="Buscar"
+                                type="button"
+                                style="width: 110px;height: 50px;"
+                                icon="pi pi-search">
+                        </button>
+                    </div>
+
+                    <div class="p-field p-col-12">
+                        <label>
+                            <strong>Preguntas</strong>
+                        </label>
+                        <p-dropdown [options]="opcionesPregunta"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="-- seleccione --"
+                                    formControlName="pregunta_id"
+                                    (click)="nombres($event,'formPre')">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12">
+                        <label class="text-color"><strong>Nuevo contenido</strong></label>
+                        <input type="text" 
+                               pInputText
+                               placeholder="¿Porque el cielo es azul?"
+                               formControlName="contenido">
+                    </div>
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col p-mt-5 p-d-flex">
+                        <button pButton 
+                                label="Guardar cambios"
+                                type="submit"
+                                [disabled]="miFormularioPregunta.invalid"
+                                class="p-button-secondary p-mr-1">
+                        </button>
+                        <button pButton 
+                                label="Eliminar"
+                                type="button"
+                                (click)="eliminarPregunta()"
+                                class="p-button-danger">
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div [hidden]="respuesta"
+             class="p-p-5 animate__animated animate__fadeInDown">
+            <h2>Respuestas</h2>
+            <p-divider></p-divider>
+            
+            <form [formGroup]="miFormularioRespuesta"
+                  (ngSubmit)="editarRespuesta()">
+
+                <!-- TODO: Buscar preguntas por categoria -->
+
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col">
+                        <label class="text-color"><strong>Categoria</strong></label>
+                        <p-dropdown [options]="opcionesCategoria"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="Categorias"
+                                    formControlName="categoria_id">
+                        </p-dropdown>
+                        <button pButton 
+                                label="buscar" 
+                                (click)="buscarPreguntas('respuesta')"
+                                icon="pi pi-search"
+                                type="button">
+                        </button>
+                    </div>
+                </div>
+                <!-- TODO: seleccionar pregunta -->
+
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12">
+                        <label class="text-color">
+                            <strong>Pregunta</strong>
+                        </label>
+                        <p-dropdown [options]="opcionesPregunta"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="-- seleccione --"
+                                    formControlName="pregunta_id">
+                        </p-dropdown>
+                        <button pButton 
+                                label="buscar" 
+                                (click)="buscarRespuestas()"
+                                icon="pi pi-search"
+                                type="button">
+                        </button>
+                    </div>
+                </div>
+                <!-- TODO: seleccionar respuesta -->
+
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-8">
+                        <label class="text-color">
+                            <strong>Respuestas</strong>
+                        </label>
+                        <p-dropdown [options]="opcionesRespuesta"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="-- seleccione --"
+                                    formControlName="id"
+                                    (click)="seleccinarRepuesta()"
+                                    (click)="nombres($event,'formRes')">
+                        </p-dropdown>
+                    </div>
+                    <div class="p-field p-col-4">
+                        <label class="text-color">
+                            <strong>Correcta</strong>
+                        </label>
+                        <p-dropdown [options]="correcta"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    placeholder="Si o No"
+                                    formControlName="correcta">
+                        </p-dropdown>
+                    </div>
+                    <div class="p-field p-col-12">
+                        <label class="text-color"><strong>Nuevo contenido</strong></label>
+                        <input type="text" 
+                               pInputText
+                               placeholder="Ejemplo:' Año 1932'"
+                               formControlName="contenido">
+                    </div>
+                   
+                </div>
+                <div class="p-fluid p-formgrid p-grid">
+                    <div class="p-field p-col-12 p-d-flex">
+                        <button pButton 
+                                label="Guardar cambios"
+                                type="submit"
+                                [disabled]="miFormularioRespuesta.invalid"
+                                class="p-button-secondary p-mr-1">
+                        </button>
+                        <button pButton 
+                                label="Eliminar"
+                                type="button"
+                                (click)="eliminarRespuesta()"
+                                class="p-button-danger">
+                        </button>
+                    </div>
+                </div>
+                    
+            </form>
+        </div>
+    </div>
+</div>

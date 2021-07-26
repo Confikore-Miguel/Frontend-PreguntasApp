@@ -1,0 +1,29 @@
+<div class="p-d-flex p-jc-center">
+    <div id="fondo-crear-responder">
+        <div class="p-m-4">
+            <h1 class="p-text-center">
+                ¿Que deseas hacer?
+            </h1>
+            <p-divider></p-divider>
+        </div>
+        
+        <div class="p-d-flex p-flex-wrap p-jc-center p-mt-6">
+            <div *ngFor="let item of labelButtons"
+                 class="tarjetas p-m-3 p-d-flex p-jc-center p-ai-center">
+                <button pButton
+                        class="p-button-rounded p-button-secondary"
+                        style="width: 250px;"
+                        (click)="rutas(item.ruta)"
+                        [ngStyle]="{backgroundColor:'var(--green-800)'}"
+                        [label]="item.label">
+                </button>
+            </div>
+        </div >
+        <p-divider styleClass="p-mt-6"></p-divider>
+        <div *ngIf="usuario.rol_id === 2"
+             id="homero" class="p-d-flex p-jc-center">
+            <img class="imgHomero" src="assets/img/homero.png" alt="">
+            <img class="imgHomero " src="assets/img/homero2.png" alt="">
+        </div>
+    </div>
+</div>

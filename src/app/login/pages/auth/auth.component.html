@@ -1,0 +1,64 @@
+<div id="formulario" 
+     class="p-p-3 animate__animated animate__fadeInDown">
+
+    <div class="p-d-flex p-jc-center">
+        <i class="pi pi-user" style="font-size:5rem;color:var(--purple-400);"></i>
+    </div>
+    
+    <div class="p-d-flex p-jc-center p-mt-3">
+        <p-tabMenu [model]="items"
+                   [activeItem]="activeItem">
+        </p-tabMenu>
+    </div>
+     
+    <!-- TODO: Formulario de login -->
+    <form [formGroup]="miFormulario"
+          (ngSubmit)="login()"
+          class="p-p-3">
+        <div class="p-fluid">
+            <div class="p-field">
+                <label> <strong>Correo</strong></label>
+                <input type="text" 
+                       pInputText
+                       formControlName="email"
+                       placeholder="ejemplo@ejemplo.com"> 
+                <span *ngIf="tieneError('email')"
+                      msg-error
+                      colores="red"
+                      mensaje="El correo es obligatorio">
+                </span>
+            </div>
+            <div class="p-field">
+                <label><strong>Contraseña</strong></label>
+                <input pPassword 
+                       [feedback]="false"
+                       type="password"
+                       formControlName="password">
+                <span *ngIf="tieneError('password')"
+                      msg-error
+                      colores="red"
+                      mensaje="La contraseña debe tener minimo 6 caracteres">
+                </span>
+            </div>
+        </div>
+        <div class="p-d-flex p-jc-center">
+            <button pButton
+                    label="Ingresar"
+                    class="p-button-rounded"
+                    style="width: 400px;"
+                    type="submit">
+            </button>
+        </div>
+    </form>
+
+    <div class="p-mb-3">
+        <p-divider></p-divider>
+        <p class="p-text-center p-mt-2">¿Aun no tienes una cuenta? 
+            <a routerLink='/login/registro' 
+               style="color:var(--purple-400);">
+               da click aqui
+            </a> 
+        </p>
+    </div>
+
+</div>

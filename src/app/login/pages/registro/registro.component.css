@@ -1,0 +1,7 @@
+#formulario{
+    width: 450px;
+    height: auto;
+    background-color:var(--surface-b);
+    border-radius: 5px;
+    box-shadow: 1px -3px 38px 21px rgba(0,0,0,0.79);
+}

@@ -1,0 +1,19 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#fondo-top10{
+    width: 100%;
+    height: auto;
+    background: var(--surface-b);
+    border-radius:20px;
+    color: var(--text-color);
+}
+.top10{
+    background: var(--surface-c);
+    width: 85%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.top10:hover{
+    background: var(--surface-a);
+}

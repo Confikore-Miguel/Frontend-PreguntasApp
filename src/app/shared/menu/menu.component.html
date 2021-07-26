@@ -1,0 +1,24 @@
+<div class="menu p-d-flex p-ai-center p-jc-between p-p-3">
+    <div class="p-d-flex p-ai-center p-ml-6">
+        <i class="pi pi-star animate__animated animate__heartBeat animate__infinite	infinite animate__slower 5s" 
+           style="font-size:3rem;color:var(--purple-400);"></i>
+        <!-- TODO: El nombre del usuario -->
+        <h1 class="p-ml-5 font">{{usuario.name+' '+usuario.last_name}}</h1>
+    </div>
+    <div class="p-mr-6 p-d-flex p-flex-wrap">
+        <button *ngIf="ocultarBoton"
+                pButton 
+                label="Regresar" 
+                style="width: 150px;" 
+                class="p-button-secondary p-m-1"
+                (click)="regresar()">
+        </button>
+        <button pButton 
+                label="Logout"
+                style="width: 150px;"
+                title="Salir"
+                (click)="logout()"
+                class="p-button-secondary p-button-outlined p-m-1">
+        </button>
+    </div>
+</div>

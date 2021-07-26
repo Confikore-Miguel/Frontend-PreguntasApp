@@ -1,0 +1,93 @@
+<div id="formulario" 
+     class="p-p-3 animate__animated animate__fadeInDown">
+    <div>
+        <h1 class="p-text-center">Crea tu cuenta</h1>
+        <p-divider></p-divider>
+    </div>
+    <div class="p-d-flex p-jc-center p-mt-3">
+        <p-tabMenu [model]="items"
+                    [activeItem]="activeItem">
+        </p-tabMenu>
+    </div>
+    <form [formGroup]="miFormulario"
+          (ngSubmit)="crearUsuario()"
+          class="p-p-3">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label> Nombre </label>
+                <input type="text" 
+                       pInputText
+                       formControlName="name"
+                       placeholder="'Juan Carlos'"> 
+                <span *ngIf="tieneError('name')"
+                      msg-error
+                      colores="red"
+                      mensaje="El nombre es obligatorio">
+                </span>
+            </div>
+            <div class="p-field p-col">
+                <label> Apellido </label>
+                <input type="text" 
+                       pInputText
+                       formControlName="last_name"
+                       placeholder="'García Lopéz'">
+                <span *ngIf="tieneError('last_name')"
+                       msg-error
+                       colores="red"
+                       mensaje="El nombre es obligatorio">
+                 </span> 
+            </div>
+        </div>
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-7">
+                <label> Correo </label>
+                <input type="text" 
+                       pInputText
+                       formControlName="email"
+                       placeholder="ejemplo@ejemplo.com">
+
+                <span *ngIf="tieneError('email')"
+                       msg-error
+                       colores="red"
+                       mensaje="El nombre es obligatorio">
+                 </span> 
+            </div>
+            <div class="p-field p-col-5">
+                <label> Rol </label>
+                <p-dropdown placeholder="-- rol --"
+                            [options]="roles"
+                            optionLabel="label"
+                            optionValue="value"
+                            formControlName="rol_id">
+                </p-dropdown>
+                <span *ngIf="tieneError('rol')"
+                       msg-error
+                       colores="red"
+                       mensaje="El rol es obligatorio">
+                 </span> 
+            </div>
+            <div class="p-field p-col-12">
+                <label> Contraseña </label>
+                <p-password formControlName="password"
+                            [toggleMask]="true">
+                    <ng-template pTemplate="footer">
+                        <p-divider></p-divider>
+                        <li>La contraseña debe tener minimo 6 caracteres</li>
+                    </ng-template>
+                </p-password>
+
+            </div>
+        </div>
+
+        <div class="p-d-flex p-jc-center">
+            <button pButton
+                    label="Resgistarse"
+                    class="p-button-rounded"
+                    style="width: 400px;"
+                    [disabled]="miFormulario.invalid"
+                    type="submit">
+            </button>
+        </div>
+    </form>
+</div>

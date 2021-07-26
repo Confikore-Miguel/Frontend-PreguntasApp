@@ -1,0 +1,148 @@
+<div id="fondo-crear" class="p-d-flex p-jc-evenly p-flex-wrap p-p-3 animate__animated animate__fadeInDown">
+  <!-- TODO: crear categoria -->
+  <div class="p-mr-6">
+      <div class="p-p-3">
+          <h2 class="p-text-center">Crear categoria</h2>
+          <p-divider></p-divider>
+      </div>
+      <form [formGroup]="miFormularioCategoria"
+            class="p-p-3"
+            (ngSubmit)="crearCategoria()">
+
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-12">
+                <label class="text-color"><strong>Crear Categoria</strong></label>
+                <input type="text" 
+                       pInputText
+                       formControlName="nom_categoria"
+                       placeholder="Ejemplo: 'Peliculas(clase A1)'">
+            </div>
+        </div>
+        <div>
+            <button pButton 
+                    label="Crear categoria"
+                    [disabled]="miFormularioCategoria.invalid"
+                    type="submit">
+            </button>
+        </div>
+      </form>
+  </div>
+  <!-- TODO: crear pregunta -->
+  <div class="p-mr-6"> 
+    <div class="p-p-3">
+        <h2 class="p-text-center">Crear pregunta</h2>
+        <p-divider></p-divider>
+    </div>
+    <form [formGroup]="miFormularioPregunta"
+          (ngSubmit)="crearPregunta()"
+          class="p-p-3">
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label>
+                    <strong>Escoger Categoria</strong>
+                </label>
+                <p-dropdown formControlName="categoria_id"
+                            [options]="opcionesCategoria"
+                            optionLabel="label"
+                            optionValue="value"
+                            placeholder="Categorias">
+                </p-dropdown>
+            </div>
+        </div>
+        <div class="p-fluid p-formgrid p-grid">
+            <div class="p-field p-col-8">
+                <label class="text-color"><strong>Contenido</strong></label>
+                <input type="text" 
+                       pInputText
+                       formControlName="contenido"
+                       placeholder="¿Porque el cielo es azul?">
+            </div>
+            <div class="p-field p-col p-mt-5">
+                <button pButton 
+                        label="Crear"
+                        [disabled]="miFormularioPregunta.invalid"
+                        type="submit">
+                </button>
+            </div>
+        </div>
+    </form>
+
+  </div>
+  <!-- TODO: crear respuesta -->
+  <div class="p-mb-4">
+    <div class="p-p-3">
+        <h2 class="p-text-center">Crear respuesta</h2>
+        <p-divider></p-divider>
+    </div>
+
+    <form [formGroup]="miFormularioRespuesta"
+          (ngSubmit)="crearRespuesta()"
+          class="p-p-3">
+
+        <div class="input-form p-fluid p-formgrid p-grid">
+            <div class="p-fluid p-formgrid p-grid">
+
+                  <!-- TODO : CATEGORIA formulario respuesta -->
+                <div class="p-field p-col-12">
+                    <label class="text-color">
+                        <strong>Categoria</strong>
+                    </label>
+                    <p-dropdown formControlName="resp_categoria_id"
+                                [options]="opcionesCategoria"
+                                optionLabel="label"
+                                optionValue="value"
+                                placeholder="Categorias">
+                    </p-dropdown>
+                    <button pButton 
+                            label="buscar" 
+                            type="button"
+                            (click)="buscarPreguntasPorCategoria()">
+                    </button>
+                </div>
+
+                <!-- TODO : PREGUNTA formulario respuesta -->
+                <div class="p-field p-col-12">
+                    <label class="text-color">
+                        <strong>Pregunta</strong>
+                    </label>
+                    <p-dropdown [options]="opcionesPregunta"
+                                optionLabel="label"
+                                optionValue="value"
+                                placeholder="Pregunta"
+                                formControlName="pregunta_id">
+                    </p-dropdown>
+                </div>
+                <div class="p-field p-col-8"
+                     [hidden]="flag">
+                    <label class="text-color"><strong>Contenido</strong></label>
+                    <input type="text" 
+                           pInputText
+                           formControlName="contenido"
+                           placeholder="Ejemplo:' Año 1932'">
+                </div>
+                <div class="p-field p-col"
+                     [hidden]="flag">
+                    <label class="text-color">
+                        <strong>Correcta</strong>
+                    </label>
+                    <p-dropdown formControlName="correcta"
+                                [options]="correcta"
+                                optionLabel="label"
+                                optionValue="value"
+                                placeholder="Si o No">
+                    </p-dropdown>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-d-flex p-jc-end p-mt-3">
+            <button pButton
+                    label="Crear respuesta"
+                    [disabled]="miFormularioRespuesta.invalid"
+                    type="submit">
+            </button>
+        </div>
+    </form>
+  </div>
+</div>
+

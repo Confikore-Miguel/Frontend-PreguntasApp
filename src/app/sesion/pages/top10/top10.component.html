@@ -1,0 +1,40 @@
+<div id="fondo-top10" class="animate__animated animate__fadeInDown">
+    <div class="p-text-center">
+        <h3 class="p-pt-3 p-pb-3">Categorias</h3>
+        <p-dropdown placeholder="-- seleccione --"
+                    [options]="opcionesCategoria"
+                    optionLabel="label"
+                    optionValue="value"
+                    #votos>
+        </p-dropdown>
+        <button pButton 
+                label="Buscar" 
+                icon="pi pi-search" 
+                iconPos="left"
+                style="height: 45px; width:120px;"
+                class="p-ml-2"
+                (click)="buscarVotos(votos.value)">
+        </button>
+        <p-divider></p-divider>
+    </div>
+    <div *ngIf="top10.length > 0" 
+         class="p-d-flex p-ai-center p-flex-wrap p-flex-column animate__animated animate__fadeInDown">
+        <h2 class="p-text-center p-pt-4 p-pb-4">
+            TOP 10 !!
+        </h2>
+        <ul class="top10 p-d-flex p-flex-column p-ai-center p-jc-center p-mb-3"
+            *ngFor="let item of top10 ; let indice=index">
+            <li 
+                class="p-d-flex p-flex-wrap p-ai-center">
+                <div class="p-mr-6">
+                    <h2><strong>{{indice+1+'. '+item.usuario.name+' '+item.usuario.last_name}}</strong></h2>
+                </div>
+                <div class="p-p-3 p-ml-6">
+                    <p>Correctas:{{item.correctas}}</p> 
+                    <p>Incorrectas:{{item.incorrectas}}</p>
+                    <p>Tiempo: {{item.tiempo}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

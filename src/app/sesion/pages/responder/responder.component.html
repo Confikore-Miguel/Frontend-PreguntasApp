@@ -1,0 +1,71 @@
+<div id="fondo-responder" class="animate__animated animate__fadeInDown">
+    <div *ngIf="!preguntas"
+         class="p-text-center p-p-5">
+        <h2 class="p-mb-2">Escoge una categoria</h2>
+        <p-dropdown placeholder="-- seleccione --"
+                    [options]="opcionesCategoria"
+                    optionLabel="label"
+                    optionValue="value"
+                    #seleccion>
+        </p-dropdown>
+        <button pButton 
+                label="Seleccionar"
+                icon="pi pi-check"
+                class="p-ml-2"
+                (click)="seleccionar(seleccion.value)"
+                style="height: 50px;">
+        </button>
+    </div>
+    <p-divider></p-divider>
+    <div class="p-d-flex p-jc-center p-pb-6 p-pt-6 animate__animated animate__backInDown">
+        
+        <div *ngIf="preguntas"
+             class="fondo-pregunta p-d-flex p-jc-center p-flex-wrap p-p-3 animate__animated animate__backInDown">
+            
+             <div>
+
+                <h1>{{minute+':'}}{{segundos}} {{cantidadPreguntas+'/'}}{{indexPreguntas+1}}</h1>
+            </div>
+            
+            <div class="pregunta p-text-center p-d-flex p-jc-center p-ai-center p-m-5 p-p-3 ">
+                <h2>{{preguntas[indexPreguntas].contenido}}</h2>
+            </div>
+            <div *ngIf="preguntas[indexPreguntas].respuestas"
+                 class="p-d-flex p-flex-wrap p-jc-center p-mb-6">
+                     <div *ngFor="let item of preguntas[indexPreguntas].respuestas;let indice=index"
+                          class="respuestas p-m-2 p-d-flex p-jc-center p-ai-center">
+                         <input type="radio" 
+                                name="f"
+                                [checked]="algo" 
+                                [value]="item.correcta" 
+                                class="p-mr-2"
+                                (click)="responder(item.correcta)">
+                         <p><strong>{{indice+1 +'. ' }}</strong>{{item.contenido}}</p>
+                     </div>
+                     <div class="p-d-flex p-jc-end p-mt-6">
+                         <span *ngIf="indexPreguntas === 0"
+                                class="p-d-flex p-ai-center p-mr-3">
+                                <strong>Mucha suerte</strong>
+                            </span>
+                        <button *ngIf="indexPreguntas !== 0"
+                                pButton 
+                                label="Pregunta anterior"
+                                icon="pi pi-arrow-left"
+                                (click)="anterior()"
+                                type="button"
+                                class="p-button-secondary p-button-outlined p-mr-2">
+                        </button>
+                        <button pButton 
+                                [label]="labelButton"
+                                icon="pi pi-arrow-right"
+                                iconPos="right"
+                                type="button"
+                                (click)="siguiente()"
+                                class="p-button-secondary">
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+</div>
